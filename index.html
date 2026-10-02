@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <!-- Importing Cursive Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sparkles-container"></div>
+    
+    <!-- Audio element for Happy Birthday song (using a reliable MP3 format) -->
+    <audio id="birthday-song" src="https://assets.mixkit.co/sfx/preview/mixkit-happy-birthday-music-box-122.mp3" autoplay loop preload="auto"></audio>
+
+    <!-- Card 1 (Balloons) -->
+    <div class="card card-1" onmouseenter="playAudio()">
+        <div class="back"></div>
+        <div class="front">
+            <div class="imgset">
+                <img width="100%" src="https://1.bp.blogspot.com/-Mgj9-rbs65E/XfMoPSD5gtI/AAAAAAAAURk/NBokE2gSS2cTSJ2em5lZ5hJDuTtRN7UVwCLcBGAsYHQ/s1600/2713997.png">
+            </div>
+            <div class="cover-text">Happy Birthday!</div>
+        </div>
+        <div class="text-container">
+            <div class="inner-img-container">
+                <img src="profile.jpg" alt="Q pie" class="inner-photo">
+            </div>
+            <p id="head" style="margin-top: 10px; font-size: 1.8em;">Happy Birthday Q 🍵pie!</p>
+        </div>
+    </div>
+    
+    <!-- Card 2 (Cake) -->
+    <div class="card card-2" onmouseenter="playAudio()">
+        <div class="back"></div>
+        <div class="front">
+            <div class="imgset badge">
+                <img width="100%" src="cake.jpg" alt="Birthday Cake">
+            </div>
+            <div class="cover-text">Make a Wish!</div>
+        </div>
+        <div class="text-container">
+            <p id="head">Happy Birthday, My Love!</p>
+            <p>Every moment with you is a beautiful dream come true. You make my world so much brighter just by being in it.</p>
+            <p>I love you endlessly! 💖</p>
+        </div>
+    </div>
+    
+    <!-- Card 3 (Gifts) -->
+    <div class="card card-3" onmouseenter="playAudio()">
+        <div class="back"></div>
+        <div class="front">
+            <div class="imgset badge">
+                <img width="100%" src="gifts.jpg" alt="Birthday Gifts">
+            </div>
+            <div class="cover-text">Surprise!</div>
+        </div>
+        <div class="text-container">
+            <p id="head">To My Everything</p>
+            <p>Growing older with you is my favorite adventure. I can't wait to celebrate countless more birthdays by your side.</p>
+            <p>Forever yours! 💕</p>
+        </div>
+    </div>
+
+    <!-- Script to add floating sparkles and handle audio -->
+    <script>
+        const container = document.querySelector('.sparkles-container');
+        const elements = ['✨', '💖', '⭐', '💕', '✨', '🎈', '❤️', '🌟'];
+        
+        for (let i = 0; i < 60; i++) {
+            let el = document.createElement('div');
+            el.classList.add('sparkle');
+            el.innerText = elements[Math.floor(Math.random() * elements.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 4 + 3) + 's';
+            el.style.animationDelay = Math.random() * 5 + 's';
+            el.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            container.appendChild(el);
+        }
+        
+        let audioPlayed = false;
+        function playAudio() {
+            if (!audioPlayed) {
+                const song = document.getElementById('birthday-song');
+                song.play().then(() => {
+                    audioPlayed = true;
+                }).catch(e => {
+                    console.log("Audio play blocked by browser until user clicks.");
+                });
+            }
+        }
+
+        // Browsers often block autoplay. Clicking anywhere on the page will guarantee it starts.
+        document.body.addEventListener('click', playAudio);
+        document.body.addEventListener('touchstart', playAudio);
+    </script>
+</body>
+</html>

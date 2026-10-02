@@ -1,0 +1,294 @@
+body {
+  /* Cream background */
+  background: #fdfbf7;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+/* Sparkles and Hearts animation */
+.sparkles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  top: -50px;
+  animation: fall linear infinite;
+  opacity: 0.8;
+  user-select: none;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: 425px;
+  border: 10px solid #ccc;
+  box-shadow: inset 10px 0px 15px 0px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0,0,0,0.15);
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card .text-container {
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-img-container {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.inner-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.card .text-container #head {
+  font-size: 2.2em;
+  margin: 20px auto 10px auto;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.card p {
+  font-size: 1.3em;
+  line-height: 1.4;
+  color: #333;
+  text-align: center;
+  margin: 15px auto 0px auto;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.9);
+}
+
+.card .front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: -10px 0px 0px -10px;
+  border: 10px solid;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  background-size: contain;
+  transform-style: preserve-3d;
+  transform-origin: 0% 50%;
+  transform: perspective(800px) rotateY(0deg);
+  transition: all 0.8s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card:hover .front {
+  transform: perspective(800px) rotateY(-170deg);
+}
+
+.card:hover .back {
+  transform: perspective(800px) rotateY(-170deg);
+  box-shadow: 7px 0px 5px 0px rgba(0, 0, 0, 0.3), inset 2px 0px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 10px solid;
+  border-radius: 5px;
+  margin: -10px 0px 0px -10px;
+  backface-visibility: visible;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .5));
+  transform-style: preserve-3d;
+  transform-origin: 0% 50%;
+  transform: perspective(800px) rotateY(0deg);
+  transition: all 0.8s ease-in-out;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================
+   FRONT COVER GRAPHICS
+   ============================ */
+
+.imgset {
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.imgset img {
+  box-shadow: 0px 6px 11px 7px rgba(0, 0, 0, 0.22);
+  border-radius: 5px;
+}
+
+.badge {
+  width: 65%;
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  background-color: #fff;
+  padding: 5px;
+  animation: floatBadge 4s ease-in-out infinite;
+}
+.badge img {
+  border-radius: 50%;
+  box-shadow: none;
+  display: block;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.cover-text {
+  font-size: 2.5em;
+  color: #fff;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-weight: bold;
+  z-index: 2;
+  margin-top: 10px;
+}
+
+/* ============================
+   INDIVIDUAL CARD STYLES
+   ============================ */
+
+/* Card 1 - Red / Pink Theme */
+.card-1 {
+  border-color: #ff4d6d;
+  /* Metallic Rose Gold inner background */
+  background: linear-gradient(135deg, #f3e5f5, #e0a3b6, #cca7ab, #e0a3b6, #f3e5f5);
+}
+.card-1 .front {
+  border-color: #ff4d6d;
+  background: linear-gradient(135deg, #ff8fa3, #ffb3c1);
+}
+.card-1 .back {
+  border-color: #ff4d6d;
+  background-color: #fff0f3;
+}
+.card-1 .text-container #head {
+  font-family: 'Dancing Script', cursive;
+  color: #a81d43;
+}
+.card-1 .cover-text,
+.card-1 p {
+  font-family: 'Dancing Script', cursive;
+}
+.card-1 .imgset img {
+  filter: hue-rotate(320deg) saturate(150%);
+}
+.card-1:hover .front {
+  background: #c9184a;
+}
+.card-1:hover .back {
+  background-color: #ffccd5;
+}
+
+/* Card 2 - Blue / Cyan Theme */
+.card-2 {
+  border-color: #0077b6;
+  /* Metallic Silver inner background */
+  background: linear-gradient(135deg, #fdfbfb, #e2ebf0, #c3cfe2, #e2ebf0, #fdfbfb);
+}
+.card-2 .front {
+  border-color: #0077b6;
+  background-color: #48cae4;
+  background-image: radial-gradient(rgba(255,255,255,0.7) 15%, transparent 16%), radial-gradient(rgba(255,255,255,0.7) 15%, transparent 16%);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+.card-2 .back {
+  border-color: #0077b6;
+  background-color: #caf0f8;
+}
+.card-2 .text-container #head {
+  font-family: 'Pacifico', cursive;
+  color: #013a5e;
+  font-size: 1.8em;
+}
+.card-2 .cover-text,
+.card-2 p {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.1em;
+}
+.card-2 .cover-text {
+  color: #03045e;
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.7);
+}
+.card-2:hover .front {
+  background-color: #0096c7;
+}
+.card-2:hover .back {
+  background-color: #ade8f4;
+}
+
+/* Card 3 - Green / Mint Theme */
+.card-3 {
+  border-color: #2a9d8f;
+  /* Metallic Gold inner background */
+  background: linear-gradient(135deg, #fef4e8, #ffe082, #d4af37, #ffe082, #fef4e8);
+}
+.card-3 .front {
+  border-color: #2a9d8f;
+  background-color: #2dc653;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255,255,255,0.4) 15px, rgba(255,255,255,0.4) 30px);
+}
+.card-3 .back {
+  border-color: #2a9d8f;
+  background-color: #e9f5e9;
+}
+.card-3 .text-container #head {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.8em;
+  color: #123324;
+}
+.card-3 .cover-text,
+.card-3 p {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.5em;
+}
+.card-3 .cover-text {
+  color: #1b4332;
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.7);
+}
+.card-3:hover .front {
+  background-color: #1b4332;
+}
+.card-3:hover .back {
+  background-color: #d8f3dc;
+}
