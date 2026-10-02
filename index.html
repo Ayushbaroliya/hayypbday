@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="loader-overlay">
+        <button id="start-btn">Start the Surprise!</button>
+        <div id="countdown" style="display: none;">10</div>
+        <p id="loading-text" style="display: none;">Get ready...</p>
+    </div>
+
     <div class="sparkles-container"></div>
     
     <!-- Audio element for Happy Birthday song (using a reliable MP3 format) -->
@@ -83,17 +89,35 @@
         function playAudio() {
             if (!audioPlayed) {
                 const song = document.getElementById('birthday-song');
-                song.play().then(() => {
-                    audioPlayed = true;
-                }).catch(e => {
-                    console.log("Audio play blocked by browser until user clicks.");
-                });
+                song.play().catch(e => console.log("Audio play blocked"));
+                audioPlayed = true;
             }
         }
 
-        // Browsers often block autoplay. Clicking anywhere on the page will guarantee it starts.
-        document.body.addEventListener('click', playAudio);
-        document.body.addEventListener('touchstart', playAudio);
+        const startBtn = document.getElementById('start-btn');
+        const countdownEl = document.getElementById('countdown');
+        const loadingText = document.getElementById('loading-text');
+        const overlay = document.getElementById('loader-overlay');
+
+        startBtn.addEventListener('click', () => {
+            playAudio();
+            startBtn.style.display = 'none';
+            countdownEl.style.display = 'block';
+            loadingText.style.display = 'block';
+            
+            let count = 10;
+            const timer = setInterval(() => {
+                count--;
+                countdownEl.innerText = count;
+                if (count <= 0) {
+                    clearInterval(timer);
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 1000);
+                }
+            }, 1000);
+        });
     </script>
 </body>
 </html>

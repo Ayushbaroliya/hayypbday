@@ -292,3 +292,53 @@ body {
 .card-3:hover .back {
   background-color: #d8f3dc;
 }
+
+/* ============================
+   LOADER OVERLAY STYLES
+   ============================ */
+
+#loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fdfbf7;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease;
+}
+
+#start-btn {
+  padding: 15px 30px;
+  font-size: 1.5em;
+  background-color: #ff4d6d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+#start-btn:hover {
+  background-color: #c9184a;
+}
+
+#countdown {
+  font-size: 5em;
+  font-weight: bold;
+  color: #ff4d6d;
+  font-family: 'Pacifico', cursive;
+  margin-top: 20px;
+}
+
+#loading-text {
+  font-size: 2.5em;
+  color: #333;
+  font-family: 'Dancing Script', cursive;
+  margin-top: 10px;
+}
